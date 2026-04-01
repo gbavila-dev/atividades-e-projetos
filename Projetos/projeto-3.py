@@ -73,6 +73,10 @@ def raiz():
         num1 = float(input("Insira o número qude deseja tirar a raíz: "))
         raiz_q = math.sqrt(num1)
 
+        if num1 < 0:
+            print("Não é possível calcular raiz quadrada de número negativo.")
+            return
+
         print(f"√{num1} = {raiz_q}")
     except ValueError:
         print("Apenas números são permitidos!")
