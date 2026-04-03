@@ -110,21 +110,6 @@ def ler_idade():
         except:
             print("Digite um número válido!")
 
-def tentar_novamente():
-    print("Insira uma opção válida!")
-    
-    while True:
-        tentar = input("Deseja tentar novamente (S/N)? Informe: ").strip().lower()
-        print()
-        
-        if tentar == "s":
-            return True
-        elif tentar == "n":
-            return False
-        else:
-            print("Responda apenas com 'S' ou 'N'.")
-            print("Sistema encerrado com sucesso...")
-
 def main():
     alunos = []    
     while True:
@@ -132,30 +117,32 @@ def main():
         try:
             opcao = int(input("Escolha uma opção (0 a 8):"))
             print()
+
+            if opcao > 8:
+                print("Opção inválida! Tente novamente.")
+
         except ValueError:
             print("Digite apenas números!")
             continue
 
-        if opcao == 1:
-            cadastrar_aluno(alunos)
-        elif opcao == 2:
-            listar_alunos(alunos)
-        elif opcao == 3:
-            mostrar_quantidade(alunos)
-        elif opcao == 4:
-            buscar_aluno(alunos)
-        elif opcao == 5:
-            remover_aluno(alunos)
-        elif opcao == 6:
-            mostrar_media(alunos)
-        elif opcao == 7:
-            maior_idade(alunos)
-        elif opcao == 8:
-            menor_idade(alunos)
-        elif opcao == 0:
-            print("Sistema encerrado com sucesso...")
-            break
-        else: 
-            if not tentar_novamente():
+        match opcao:
+            case 1:
+                cadastrar_aluno(alunos)
+            case 2:
+                listar_alunos(alunos)
+            case 3:
+                mostrar_quantidade(alunos)
+            case 4:
+                buscar_aluno(alunos)
+            case 5:
+                remover_aluno(alunos)
+            case 6:
+                mostrar_media(alunos)
+            case 7:
+                maior_idade(alunos)
+            case 8:
+                menor_idade(alunos)
+            case 0:
+                print("Sistema encerrado com sucesso...")
                 break
 main()
