@@ -285,40 +285,40 @@
 
 # 17. qual número mais se repete
 
-num = []
-repetidos = []
-unicos = []
-maior = 0
-mais_repete = None
+# num = []
+# repetidos = []
+# unicos = []
+# maior = 0
+# mais_repete = None
 
-for i in range(5):
-    n = int(input("Insira um número: "))
-    num.append(n)
+# for i in range(5):
+#     n = int(input("Insira um número: "))
+#     num.append(n)
 
-for i in range(len(num)):
-    contador = 0
-    for j in range(len(num)):
-        if num[i] == num[j]:
-            contador += 1
+# for i in range(len(num)):
+#     contador = 0
+#     for j in range(len(num)):
+#         if num[i] == num[j]:
+#             contador += 1
 
         
-    if contador > 1:
-        if maior < contador:
-            maior = contador
-            mais_repete = num[i]
+#     if contador > 1:
+#         if maior < contador:
+#             maior = contador
+#             mais_repete = num[i]
 
-        if num[i] not in repetidos:
-            repetidos.append(num[i])
-            print(f"O número {num[i]} aparece mais de uma vez.")
+#         if num[i] not in repetidos:
+#             repetidos.append(num[i])
+#             print(f"O número {num[i]} aparece mais de uma vez.")
     
-    elif contador == 1:
-        if num[i] not in unicos:
-            unicos.append(num[i])
-            print(f"O número {num[i]} aparece apenas uma vez.")
+#     elif contador == 1:
+#         if num[i] not in unicos:
+#             unicos.append(num[i])
+#             print(f"O número {num[i]} aparece apenas uma vez.")
 
-if mais_repete is not None:
-    print(f"O número {mais_repete} apareceu mais vezes ({maior}).")
-else:
-    print("Nenhum número se repete.")
+# if mais_repete is not None:
+#     print(f"O número {mais_repete} apareceu mais vezes ({maior}).")
+# else:
+#     print("Nenhum número se repete.")
 
     
