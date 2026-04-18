@@ -12,15 +12,14 @@
 
 # 2. Mostrar ao contrário
 
-# 👉 Leia 5 números e mostre:
-
 # numeros = []
 
 # for i in range(5):
 #     n = int(input("Insira um número: "))
 #     numeros.append(n)
 
-# print(numeros[::-1])
+# for i in range(len(numeros) - 1, -1, -1):
+#     print(numeros[i])
 
 # 3. Somar elementos
 
@@ -63,7 +62,7 @@
 #     n = int(input("Insira um número: "))
 #     numeros.append(n)
 
-# maior = numeros[i]
+# maior = numeros[0]
 # for i in range(len(numeros)):
 #     if numeros[i] > maior:
 #         maior = numeros[i]
@@ -80,7 +79,7 @@
 #     n = int(input("Insira um número: "))
 #     numeros.append(n)
 
-# menor = numeros[i] 
+# menor = numeros[0] 
 # for i in range(len(numeros)):
 #     if numeros[i] < menor:
 #         menor = numeros[i]
@@ -147,6 +146,7 @@
 # 👉 Mostre:
 
 # numeros = []
+# mostrados = []
 
 # for i in range(5):
 #     n = int(input("Insira um número: "))
@@ -158,10 +158,9 @@
 #         if numeros[i] == numeros[j]:
 #             contador += 1
             
-# if contador > 1:
-#      print(f"Número {numeros[i]} aparece {contador} vezes")
-# else:
-#     print("Nenhum número se repete")
+#     if contador > 1 and numeros[i] not in mostrados:
+#         print(f"Número {numeros[i]} aparece {contador} vezes")
+#         mostrados.append(numeros[i])
 
 # 11. Mostrar repetidos
 
@@ -239,9 +238,7 @@
 #             if numeros[i] not in repetidos:
 #                 repetidos.append(numeros[i])
 
-
-# print(f"Repetidos: {repetidos}")
-# print(f"Mais repete: {mais_repete}")
+# print(f"O número {mais_repete} aparece mais vezes")
 
 # 🔹 14. Simular cadeiras (mini cinema)
 
@@ -277,16 +274,14 @@
 
 # [4, 3, 2, 1]
 
-# lista = [1, 2, 3, 4]
+lista = [1, 2, 3, 4]
 
-# for i in range(len(lista)):
-#     for j in range(len(lista)):
-#         if lista[i] > lista[j]: 
-#             temp = lista[i]
-#             lista[i] = lista[j]
-#             lista[j] = temp
+for i in range(len(lista) // 2):
+    temp = lista[i]
+    lista[i] = lista[len(lista) - 1 - i]
+    lista[len(lista) - 1 - i] = temp
 
-# print(lista)
+print(lista)
 
 # 🔹 16. Sistema simples
 
@@ -300,72 +295,75 @@
 
 # 💥 Isso mistura TUDO
 
-def menu():
-    print("MENU")
-    print("----------\n")
-    print("1 - Add número")
-    print("2 - Mostrar lista")
-    print("3 - Mostrar maior")
-    print("4 - Mostrar repetidos")
-    print("0 - Sair")
+# def menu():
+#     print()
+#     print("MENU")
+#     print("----------\n")
+#     print("1 - Add número")
+#     print("2 - Mostrar lista")
+#     print("3 - Mostrar maior")
+#     print("4 - Mostrar repetidos")
+#     print("0 - Sair")
 
-def add_numero(num):
-    n = int(input("- Insira um número na lista:"))
-    num.append(n)
+# def add_numero(num):
+#     n = int(input("- Insira um número na lista:"))
+#     num.append(n)
 
-    print(f"Número {n} adicionado com sucesso!")
+#     print(f"Número {n} adicionado com sucesso!")
 
-def mostrar_lista(num):
-    print(f"- Lista completa: {num}")
+# def mostrar_lista(num):
+#     print(f"- Lista completa: {num}")
 
-def mostrar_maior(num):
-    maior = 0
-    i = 0
-    for i in range(len(num)):
-        if num[i] > maior:
-            maior = num[i]
+# def mostrar_maior(num):
+#     i = 0
+#     maior = num[i]
+#     for i in range(len(num)):
+#         if num[i] > maior:
+#             maior = num[i]
 
-    print(f"O maior número da lista é: {maior}")
+#     print(f"O maior número da lista é: {maior}")
 
-def mostrar_repetidos(num):
-    repetidos = [] 
-    i = 0
+# def mostrar_repetidos(num):
+#     repetidos = [] 
+#     i = 0
 
-    for i in range(len(num)):
-        contador = 0
-        for j in range(len(num)):
-            if num[i] == num[j]:
-                contador += 1
+#     for i in range(len(num)):
+#         contador = 0
+#         for j in range(len(num)):
+#             if num[i] == num[j]:
+#                 contador += 1
         
-        if contador > 1:
-            if num[i] not in repetidos:
-                repetidos.append(num[i])
+#         if contador > 1:
+#             if num[i] not in repetidos:
+#                 repetidos.append(num[i])
 
-    print(f"Números que se repetem: {repetidos}")
+#     print(f"Números que se repetem: {repetidos}")
 
-num = []
+# num = []
 
-def main():
-    while True:
-        menu()
-        try:
-            opcao = int(input("- Insira uma opção:"))
-        except ValueError:
-            print("Insira apenas números!")
+# def main():
+#     while True:
+#         menu()
+#         try:
+#             opcao = int(input("- Insira uma opção:"))
+#             print()
 
-        match opcao:
-            case 1:
-                add_numero(num)
-            case 2:
-                mostrar_lista(num)
-            case 3:
-                mostrar_maior(num)
-            case 4:
-                mostrar_repetidos(num)
-            case 0:
-                print("Encerrando o sistema...")
-                break
-            case _:
-                print("Insira uma opçãoi válida!")
-                break
-main()
+#         except ValueError:
+#             print("Insira apenas números!")
+#             continue
+
+#         match opcao:
+#             case 1:
+#                 add_numero(num)
+#             case 2:
+#                 mostrar_lista(num)
+#             case 3:
+#                 mostrar_maior(num)
+#             case 4:
+#                 mostrar_repetidos(num)
+#             case 0:
+#                 print("Encerrando o sistema...")
+#                 break
+#             case _:
+#                 print("Insira uma opção válida!")
+# main()
