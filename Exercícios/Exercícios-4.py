@@ -235,10 +235,14 @@
 #         if maior < contador:
 #             maior = contador
 #             mais_repete = numeros[i]
-#             if numeros[i] not in repetidos:
-#                 repetidos.append(numeros[i])
 
-# print(f"O número {mais_repete} aparece mais vezes")
+#         if numeros[i] not in repetidos:
+#             repetidos.append(numeros[i])
+
+# if mais_repete == None:
+#     print("Nenhum número aparece mais vezes")
+# else:
+#     print(f"O número {mais_repete} aparece mais vezes")
 
 # 🔹 14. Simular cadeiras (mini cinema)
 
@@ -274,14 +278,14 @@
 
 # [4, 3, 2, 1]
 
-lista = [1, 2, 3, 4]
+# lista = [1, 2, 3, 4]
 
-for i in range(len(lista) // 2):
-    temp = lista[i]
-    lista[i] = lista[len(lista) - 1 - i]
-    lista[len(lista) - 1 - i] = temp
+# for i in range(len(lista) // 2):
+#     temp = lista[i]
+#     lista[i] = lista[len(lista) - 1 - i]
+#     lista[len(lista) - 1 - i] = temp
 
-print(lista)
+# print(lista)
 
 # 🔹 16. Sistema simples
 
@@ -315,13 +319,17 @@ print(lista)
 #     print(f"- Lista completa: {num}")
 
 # def mostrar_maior(num):
-#     i = 0
-#     maior = num[i]
-#     for i in range(len(num)):
-#         if num[i] > maior:
-#             maior = num[i]
+#     if len(num) == 0:
+#         print("Lista vazia!")
+#         return
+#     else:
+#         maior = num[0]
 
-#     print(f"O maior número da lista é: {maior}")
+#         for i in range(len(num)):
+#             if num[i] > maior:
+#                 maior = num[i]
+
+#         print(f"O maior número da lista é: {maior}")
 
 # def mostrar_repetidos(num):
 #     repetidos = [] 
@@ -367,3 +375,132 @@ print(lista)
 #             case _:
 #                 print("Insira uma opção válida!")
 # main()
+
+# Desafio
+num = []
+
+def menu():
+    print()
+    print("==================")
+    print("SISTEMA - NÚMEROS")
+    print("==================")
+    print("1 - Adicionar número")
+    print("2 - Mostrar lista")
+    print("3 - Mostrar maior e menor")
+    print("4 - Mostrar repetidos")
+    print("5 - Mostrar únicos")
+    print("6 - Mostrar média")
+    print("7 - Mostrar lista invertida")
+    print("0 - Sair")
+
+def adicionar_numero(num):
+    n = int(input("- Insira um número: "))
+    num.append(n)
+
+def mostrar_lista(num):
+    print(f"Lista: {num}")
+
+def maior_e_menor(num):
+    if len(num) == 0:
+        print("Lista vazia!")
+        return
+    
+    maior = num[0]
+    menor = num[0]
+
+    for i in range(len(num)):
+        if num[i] > maior:
+                maior = num[i]
+
+        if num[i] < menor:
+            menor = num[i]
+
+    print(f"Maior número da lista: {maior}")
+    print(f"Menor número da lista: {menor}")
+
+def mostrar_repetidos(num):
+    repetidos = []
+
+    for i in range(len(num)):
+        contador = 0
+        for j in range(len(num)):
+            if num[i] == num[j]:
+                contador += 1
+        
+        if contador > 1:
+            if num[i] not in repetidos:
+                repetidos.append(num[i])
+
+    print(f"Números repetidos: {repetidos}")
+
+def mostrar_unicos(num):
+    unicos = []
+
+    for i in range(len(num)):
+        contador = 0
+        for j in range(len(num)):
+            if num[i] == num[j]:
+                contador += 1
+
+        if contador == 1:
+            if num[i] not in unicos:
+                unicos.append(num[i])
+
+    print(f"Números que não repetem: {unicos}")
+
+def mostrar_media(num):
+
+    if len(num) == 0:
+        print("A lista está vazia!")
+        return
+
+    soma = sum(num)
+    media = soma / len(num)
+
+    print(f"A média da lista é: {media:.2f}")
+
+def mostrar_lista_invertida(num):
+    if len(num) == 0:
+        print("Lista vazia!")
+        return
+
+    print("Lista invertida: ", end="")
+
+    for i in range(len(num) - 1, -1, -1):
+        print(num[i], end=" ")
+        
+    print()
+
+def main():
+    while True:
+        menu()
+        try:
+            opcao = int(input("- Digite uma opção: "))   
+            print()         
+
+        except ValueError:
+            print("Insira apenas números!")
+            continue
+
+        match opcao:
+            case 1:
+                adicionar_numero(num)
+            case 2:
+                mostrar_lista(num)
+            case 3:
+                maior_e_menor(num)
+            case 4:
+                mostrar_repetidos(num)
+            case 5:
+                mostrar_unicos(num)
+            case 6:
+                mostrar_media(num)
+            case 7:
+                mostrar_lista_invertida(num)
+            case 0:
+                print()
+                print("Você saiu do sistema, volte sempre!")
+                break
+            case _:
+                print("Insira um valor válido!")
+main()
