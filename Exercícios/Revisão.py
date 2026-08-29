@@ -229,37 +229,27 @@ print(segundo_maior)
 valor = int(input("Digite o valor de saque: "))
 
 notas100 = valor // 100
-
 valor = valor % 100
 
 notas50 = valor // 50
-
 valor = valor % 50
 
 notas20 = valor // 20
-
 valor= valor % 20
 
 notas10 = valor // 10
-
 valor = valor % 10
 
 notas5 = valor // 5
-
 valor = valor % 5
 
 notas2 = valor // 2
 
 print(f"- 100: {notas100}")
-
 print(f"- 50: {notas50}")
-
 print(f"- 20: {notas20}")
-
 print(f"- 10: {notas10}")
-
 print(f"- 5: {notas5}")
-
 print(f"- 2: {notas2}")
 
 
