@@ -169,7 +169,6 @@ print(menor)
 numeros = [10, 5, 8, 10, 3, 10, 7, 5, 2]
 
 n = int(input("Digite o número que deseja procurar: "))
-
 contador = 0
 
 for i in range(len(numeros)):
@@ -186,7 +185,6 @@ print(f"O número {n} aparece {contador} vezes.")
 numeros = [12, 7, 4, 9, 15, 20, 8, 3, 10]
 
 pares = []
-
 impares = []
 
 for i in range(len(numeros)):
@@ -196,7 +194,6 @@ for i in range(len(numeros)):
         impares.append(numeros[i])
 
 print("Pares: ", pares)
-
 print("Ímpares: ", impares)
 
 
@@ -205,9 +202,7 @@ print("Ímpares: ", impares)
 # ==================================================
 
 numeros = [15, 8, 32, 4, 27, 19, 32, 10]
-
 maior = numeros[0]
-
 segundo_maior = numeros[0]
 
 for i in range(len(numeros)):
@@ -258,9 +253,7 @@ print(f"- 2: {notas2}")
 # ==================================================
 
 usuario_correto = "admin"
-
 senha_correta = "1234"
-
 tentativas = 3
 
 while tentativas > 0:
@@ -297,7 +290,6 @@ matriz = [
 for i in range(len(matriz)):
     for j in range(len(matriz[i])):
         print(matriz[i][j], end = " ")
-
     print()
 
 
@@ -316,7 +308,6 @@ soma = 0
 for i in range(len(matriz)):
     for j in range(len(matriz[i])):
         soma += matriz[i][j]
-
 print(soma)
 
 
@@ -336,7 +327,6 @@ for i in range(len(matriz)):
     for j in range(len(matriz[i])):
         if matriz[i][j] > maior:
             maior = matriz[i][j]
-
 print(maior)
 
 
@@ -393,7 +383,6 @@ def main():
             case 1:
                 numero1 = int(input("Número 1: "))
                 numero2 = int(input("Número 2: "))
-
                 resultado = somar(numero1, numero2)
 
                 print(resultado)
@@ -402,7 +391,6 @@ def main():
             case 2:
                 numero1 = int(input("Número 1: "))
                 numero2 = int(input("Número 2: "))
-
                 resultado = subtrair(numero1, numero2)
 
                 print(resultado)
@@ -411,7 +399,6 @@ def main():
             case 3:
                 numero1 = int(input("Número 1: "))
                 numero2 = int(input("Número 2: "))
-
                 resultado = multiplicar(numero1, numero2)
 
                 print(resultado)
@@ -420,7 +407,6 @@ def main():
             case 4:
                 numero1 = int(input("Número 1: "))
                 numero2 = int(input("Número 2: "))
-
                 resultado = dividir(numero1, numero2)
 
                 print(resultado)
@@ -446,7 +432,6 @@ def eh_primo(numero):
     return True
 
 resultado = eh_primo(9)
-
 print(resultado)
 
 
@@ -459,7 +444,6 @@ numeros = [10, 13, 15, 16, 23, 70]
 def calcular_media(numeros):
 
     soma = 0
-
     media = 0
 
     for i in range(len(numeros)):
@@ -470,7 +454,6 @@ def calcular_media(numeros):
     return media
 
 resultado = calcular_media(numeros)
-
 print(resultado)
 
 
@@ -492,7 +475,6 @@ def contar_numero(numeros, n):
     return contador
 
 resultado = contar_numero(numeros, 5)
-
 print(resultado)
 
 
@@ -514,7 +496,6 @@ def maior_numero(numeros):
     return maior
 
 resultado = maior_numero(numeros)
-
 print(resultado)
 
 
@@ -536,7 +517,6 @@ def menor_numero(numeros):
     return menor
 
 resultado = menor_numero(numeros)
-
 print(resultado)
 
 
@@ -558,5 +538,4 @@ def criar_pares(numeros):
     return pares
 
 resultado = criar_pares(numeros)
-
 print(resultado)
