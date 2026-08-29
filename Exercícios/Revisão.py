@@ -258,7 +258,6 @@ tentativas = 3
 
 while tentativas > 0:
     usuario = str(input("Insira o nome de usuário: "))
-
     senha = str(input("Insira a senha do login: "))
 
     if usuario != usuario_correto or senha != senha_correta:
