@@ -537,4 +537,4 @@ def criar_pares(numeros):
     return pares
 
 resultado = criar_pares(numeros)
-print(resultado)
+print(resultado) 
