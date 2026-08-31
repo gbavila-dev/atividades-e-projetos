@@ -253,3 +253,104 @@
 #                 print("Encerrando o sistema...")
 #                 break
 # main()
+
+# ==================================================
+# QUESTÃO 29 — LISTA + DICIONARIOS
+# ==================================================
+
+alunos = []
+
+def menu():
+    print("====================")
+    print("1 - Cadastrar aluno")
+    print("2 - Mostrar alunos")
+    print("3 - Calcular média (Notas)")
+    print("4 - Mostrar maior nota")
+    print("5 - Verificar aluno")
+    print("0 - Sair")
+    print("====================")
+
+
+def cadastrar_alunos(alunos):
+    aluno = {}
+
+    nome = input("Nome: ")
+    idade = int(input("Idade: "))
+    nota = int(input("Nota: "))
+
+    aluno["Nome"] = nome
+    aluno["Idade"] = idade
+    aluno["Nota"] = nota
+
+    alunos.append(aluno)
+
+def mostrar_alunos(alunos):
+    i = 0
+
+    for aluno in alunos:
+        i += 1
+        print(f"Aluno {i}: ")
+        for chave, valor in aluno.items():
+            print(f" - {chave}: {valor}")
+        print()
+
+def calcular_media(alunos):
+    soma = 0
+    quantidade = 0
+
+    for aluno in alunos:
+        soma += aluno["Nota"]
+        quantidade += 1
+
+    media = soma / quantidade
+
+    print(f"Média de notas: {media}")
+
+def maior_nota(alunos):
+    maior = 0
+
+    for aluno in alunos:
+        if aluno["Nota"] > maior:
+            maior = aluno["Nota"]
+
+    print(f"Maior nota: {maior}")
+
+def verificar_aluno(alunos):
+    nome = input("Digite o nome do aluno: ")
+
+    encontrado = False
+
+    for aluno in alunos:
+        if nome == aluno["Nome"]:
+            encontrado = True
+
+    if encontrado:
+        print("Este aluno está cadastrado!")
+    else:
+        print("Este aluno não está cadastrado!")
+
+def main():
+    while True:
+        menu()
+        try:
+            opcao = int(input("Insira a opção: "))
+            print()
+        except ValueError:
+            print("Insira um valor válido!")
+            continue
+
+        match opcao:
+            case 1:
+                cadastrar_alunos(alunos)
+            case 2:
+                mostrar_alunos(alunos)
+            case 3: 
+                calcular_media(alunos)
+            case 4:
+                maior_nota(alunos)
+            case 5:
+                verificar_aluno(alunos)
+            case 0:
+                print("Encerrando o sistema...")
+                break
+main()
