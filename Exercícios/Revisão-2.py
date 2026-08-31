@@ -396,18 +396,26 @@ def calcular_estoque(produtos):
         total_produto = produto["Preço"] * produto["Quantidade"]
         valor_estoque += total_produto
 
-        print(f"- {produto["Nome"]}: R${total_produto}")
+        print(f"- {produto['Nome']}: R${total_produto}")
     print()
 
     print(f"- Valor total do estoque: R${valor_estoque}")
 
 def mostrar_caro(produtos):
-    maior_valor = produtos[0]["Preço"]
-    for produto in produtos:
-        if produto["Preço"] > maior_valor:
-            maior_valor = produto["Preço"]
+    if len(produtos) > 0:
+        maior_valor = produtos[0]["Preço"]
+        produto_c = produtos[0]["Nome"]
 
-    print(f"Maior valor encontrado: {maior_valor}")
+
+        for produto in produtos:
+            if produto["Preço"] > maior_valor:
+                 maior_valor = produto["Preço"]
+                 produto_c = produto["Nome"]
+
+        print(f"Produto mais caro: {produto_c} - {maior_valor}")
+    else:
+        print("Cadastre um produto primeiro!")
+
 
 def buscar_produto(produtos):
     busca = input("Nome do produto que deseja buscar: ")
@@ -429,9 +437,9 @@ def remover_produto(produtos):
     for produto in produtos:
         if remover == produto["Nome"]:
             encontrado = True
-            if encontrado == True:
-                produtos.remove(produto)
-                print("Produto removido com sucesso!")
+
+            produtos.remove(produto)
+            print("Produto removido com sucesso!")
 
     if encontrado == False:
         print("Produto não existe ou ja fora deletado!")
