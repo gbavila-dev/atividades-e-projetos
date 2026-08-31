@@ -274,13 +274,9 @@ def menu():
 def cadastrar_alunos(alunos):
     aluno = {}
 
-    nome = input("Nome: ")
-    idade = int(input("Idade: "))
-    nota = int(input("Nota: "))
-
-    aluno["Nome"] = nome
-    aluno["Idade"] = idade
-    aluno["Nota"] = nota
+    aluno["Nome"] = input("Nome: ")
+    aluno["Idade"] = int(input("Idade: "))
+    aluno["Nota"] = int(input("Nota: "))
 
     alunos.append(aluno)
 
