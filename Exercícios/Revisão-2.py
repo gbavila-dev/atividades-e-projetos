@@ -258,95 +258,208 @@
 # QUESTÃO 29 — LISTA + DICIONARIOS
 # ==================================================
 
-alunos = []
+# alunos = []
+
+# def menu():
+#     print("====================")
+#     print("1 - Cadastrar aluno")
+#     print("2 - Mostrar alunos")
+#     print("3 - Calcular média (Notas)")
+#     print("4 - Mostrar maior nota")
+#     print("5 - Verificar aluno")
+#     print("0 - Sair")
+#     print("====================")
+
+
+# def cadastrar_alunos(alunos):
+#     aluno = {}
+
+#     aluno["Nome"] = input("Nome: ")
+#     aluno["Idade"] = int(input("Idade: "))
+#     aluno["Nota"] = int(input("Nota: "))
+
+#     alunos.append(aluno)
+
+# def mostrar_alunos(alunos):
+#     i = 0
+
+#     for aluno in alunos:
+#         i += 1
+#         print(f"Aluno {i}: ")
+#         for chave, valor in aluno.items():
+#             print(f" - {chave}: {valor}")
+#         print()
+
+# def calcular_media(alunos):
+#     soma = 0
+#     quantidade = 0
+
+#     for aluno in alunos:
+#         soma += aluno["Nota"]
+#         quantidade += 1
+
+#     media = soma / quantidade
+
+#     print(f"Média de notas: {media}")
+
+# def maior_nota(alunos):
+#     maior = 0
+
+#     for aluno in alunos:
+#         if aluno["Nota"] > maior:
+#             maior = aluno["Nota"]
+
+#     print(f"Maior nota: {maior}")
+
+# def verificar_aluno(alunos):
+#     nome = input("Digite o nome do aluno: ")
+
+#     encontrado = False
+
+#     for aluno in alunos:
+#         if nome == aluno["Nome"]:
+#             encontrado = True
+
+#     if encontrado:
+#         print("Este aluno está cadastrado!")
+#     else:
+#         print("Este aluno não está cadastrado!")
+
+# def main():
+#     while True:
+#         menu()
+#         try:
+#             opcao = int(input("Insira a opção: "))
+#             print()
+#         except ValueError:
+#             print("Insira um valor válido!")
+#             continue
+
+#         match opcao:
+#             case 1:
+#                 cadastrar_alunos(alunos)
+#             case 2:
+#                 mostrar_alunos(alunos)
+#             case 3: 
+#                 calcular_media(alunos)
+#             case 4:
+#                 maior_nota(alunos)
+#             case 5:
+#                 verificar_aluno(alunos)
+#             case 0:
+#                 print("Encerrando o sistema...")
+#                 break
+# main()
+
+# ==================================================
+# QUESTÃO 30 — Sistema de Produtos
+# ==================================================
+
+produtos = []
 
 def menu():
-    print("====================")
-    print("1 - Cadastrar aluno")
-    print("2 - Mostrar alunos")
-    print("3 - Calcular média (Notas)")
-    print("4 - Mostrar maior nota")
-    print("5 - Verificar aluno")
+    print("==================")
+    print("1 - Cadastrar Produto")
+    print("2 - Mostrar Produto")
+    print("3 - Calcular valor total do estoque")
+    print("4 - Mostrar produto mais caro")
+    print("5 - Buscar produto")
+    print("6 - Remover Produto")
     print("0 - Sair")
-    print("====================")
+    print("==================")
 
+def cadastrar_produto(produtos):
+    produto = {}
 
-def cadastrar_alunos(alunos):
-    aluno = {}
+    produto["Nome"] = input("Nome do produto: ")
+    produto["Preço"] = float(input("Preço do produto: R$"))
+    produto["Quantidade"] = int(input("Quantidade no estoque: "))
 
-    aluno["Nome"] = input("Nome: ")
-    aluno["Idade"] = int(input("Idade: "))
-    aluno["Nota"] = int(input("Nota: "))
+    print("- Produto cadastrado com sucesso!")
 
-    alunos.append(aluno)
+    produtos.append(produto)
 
-def mostrar_alunos(alunos):
+def mostrar_produto(produtos):
     i = 0
-
-    for aluno in alunos:
+    for produto in produtos:
         i += 1
-        print(f"Aluno {i}: ")
-        for chave, valor in aluno.items():
-            print(f" - {chave}: {valor}")
+        print(f"Produto {i}:")
+        for chave, valor in produto.items():
+            print(f"- {chave}: {valor}")
         print()
 
-def calcular_media(alunos):
-    soma = 0
-    quantidade = 0
+def calcular_estoque(produtos):
+    total_produto = 0
+    valor_estoque = 0
 
-    for aluno in alunos:
-        soma += aluno["Nota"]
-        quantidade += 1
+    for produto in produtos:
+        total_produto = produto["Preço"] * produto["Quantidade"]
+        valor_estoque += total_produto
 
-    media = soma / quantidade
+        print(f"- {produto["Nome"]}: R${total_produto}")
+    print()
 
-    print(f"Média de notas: {media}")
+    print(f"- Valor total do estoque: R${valor_estoque}")
 
-def maior_nota(alunos):
-    maior = 0
+def mostrar_caro(produtos):
+    maior_valor = produtos[0]["Preço"]
+    for produto in produtos:
+        if produto["Preço"] > maior_valor:
+            maior_valor = produto["Preço"]
 
-    for aluno in alunos:
-        if aluno["Nota"] > maior:
-            maior = aluno["Nota"]
+    print(f"Maior valor encontrado: {maior_valor}")
 
-    print(f"Maior nota: {maior}")
-
-def verificar_aluno(alunos):
-    nome = input("Digite o nome do aluno: ")
-
+def buscar_produto(produtos):
+    busca = input("Nome do produto que deseja buscar: ")
     encontrado = False
 
-    for aluno in alunos:
-        if nome == aluno["Nome"]:
+    for produto in produtos:
+        if busca == produto["Nome"]:
             encontrado = True
 
-    if encontrado:
-        print("Este aluno está cadastrado!")
+    if encontrado == True:
+        print("Produto encontrado com sucesso!")
     else:
-        print("Este aluno não está cadastrado!")
+        print("Produto não existente!")
+
+def remover_produto(produtos):
+    remover = input("Nome do produto que deseja remover: ")
+    encontrado = False
+
+    for produto in produtos:
+        if remover == produto["Nome"]:
+            encontrado = True
+            if encontrado == True:
+                produtos.remove(produto)
+                print("Produto removido com sucesso!")
+
+    if encontrado == False:
+        print("Produto não existe ou ja fora deletado!")
 
 def main():
     while True:
         menu()
         try:
-            opcao = int(input("Insira a opção: "))
+            opcao = int(input("- Insira a opção: "))
             print()
         except ValueError:
-            print("Insira um valor válido!")
+            print("- Insira um valor válido!")
             continue
 
         match opcao:
             case 1:
-                cadastrar_alunos(alunos)
+                cadastrar_produto(produtos)
             case 2:
-                mostrar_alunos(alunos)
-            case 3: 
-                calcular_media(alunos)
+                mostrar_produto(produtos)
+            case 3:
+                calcular_estoque(produtos)
             case 4:
-                maior_nota(alunos)
+                mostrar_caro(produtos)
             case 5:
-                verificar_aluno(alunos)
+                buscar_produto(produtos)
+            case 6:
+                remover_produto(produtos)
             case 0:
-                print("Encerrando o sistema...")
+                print("Saindo do sistema...")
                 break
 main()
