@@ -355,119 +355,168 @@
 # QUESTÃO 30 — Sistema de Produtos
 # ==================================================
 
-produtos = []
+# produtos = []
+
+# def menu():
+#     print("==================")
+#     print("1 - Cadastrar Produto")
+#     print("2 - Mostrar Produto")
+#     print("3 - Calcular valor total do estoque")
+#     print("4 - Mostrar produto mais caro")
+#     print("5 - Buscar produto")
+#     print("6 - Remover Produto")
+#     print("0 - Sair")
+#     print("==================")
+
+# def cadastrar_produto(produtos):
+#     produto = {}
+
+#     produto["Nome"] = input("Nome do produto: ")
+#     produto["Preço"] = float(input("Preço do produto: R$"))
+#     produto["Quantidade"] = int(input("Quantidade no estoque: "))
+
+#     print("- Produto cadastrado com sucesso!")
+
+#     produtos.append(produto)
+
+# def mostrar_produto(produtos):
+#     i = 0
+#     for produto in produtos:
+#         i += 1
+#         print(f"Produto {i}:")
+#         for chave, valor in produto.items():
+#             print(f"- {chave}: {valor}")
+#         print()
+
+# def calcular_estoque(produtos):
+#     total_produto = 0
+#     valor_estoque = 0
+
+#     for produto in produtos:
+#         total_produto = produto["Preço"] * produto["Quantidade"]
+#         valor_estoque += total_produto
+
+#         print(f"- {produto['Nome']}: R${total_produto}")
+#     print()
+
+#     print(f"- Valor total do estoque: R${valor_estoque}")
+
+# def mostrar_caro(produtos):
+#     if len(produtos) > 0:
+#         maior_valor = produtos[0]["Preço"]
+#         produto_c = produtos[0]["Nome"]
+
+
+#         for produto in produtos:
+#             if produto["Preço"] > maior_valor:
+#                  maior_valor = produto["Preço"]
+#                  produto_c = produto["Nome"]
+
+#         print(f"Produto mais caro: {produto_c} - {maior_valor}")
+#     else:
+#         print("Cadastre um produto primeiro!")
+
+
+# def buscar_produto(produtos):
+#     busca = input("Nome do produto que deseja buscar: ")
+#     encontrado = False
+
+#     for produto in produtos:
+#         if busca == produto["Nome"]:
+#             encontrado = True
+
+#     if encontrado == True:
+#         print("Produto encontrado com sucesso!")
+#     else:
+#         print("Produto não existente!")
+
+# def remover_produto(produtos):
+#     remover = input("Nome do produto que deseja remover: ")
+#     encontrado = False
+
+#     for produto in produtos:
+#         if remover == produto["Nome"]:
+#             encontrado = True
+
+#             produtos.remove(produto)
+#             print("Produto removido com sucesso!")
+
+#     if encontrado == False:
+#         print("Produto não existe ou ja fora deletado!")
+
+# def main():
+#     while True:
+#         menu()
+#         try:
+#             opcao = int(input("- Insira a opção: "))
+#             print()
+#         except ValueError:
+#             print("- Insira um valor válido!")
+#             continue
+
+#         match opcao:
+#             case 1:
+#                 cadastrar_produto(produtos)
+#             case 2:
+#                 mostrar_produto(produtos)
+#             case 3:
+#                 calcular_estoque(produtos)
+#             case 4:
+#                 mostrar_caro(produtos)
+#             case 5:
+#                 buscar_produto(produtos)
+#             case 6:
+#                 remover_produto(produtos)
+#             case 0:
+#                 print("Saindo do sistema...")
+#                 break
+# main()
+
+alunos = []
 
 def menu():
-    print("==================")
-    print("1 - Cadastrar Produto")
-    print("2 - Mostrar Produto")
-    print("3 - Calcular valor total do estoque")
-    print("4 - Mostrar produto mais caro")
-    print("5 - Buscar produto")
-    print("6 - Remover Produto")
+    print("====================")
+    print("1 - Cadastrar aluno")
+    print("2 - Mostrar alunos")
+    print("3 - Calcular média da turma")
+    print("4 - Mostrar maior nota")
+    print("5 - Mostrar menor nota")                
+    print("6 - Mostrar alunos aprovados")
+    print("7 - Buscar aluno")
+    print("8 - Remover aluno")
     print("0 - Sair")
-    print("==================")
+    print("====================")
 
-def cadastrar_produto(produtos):
-    produto = {}
+def cadastrar_aluno(alunos):
+    aluno = {}
 
-    produto["Nome"] = input("Nome do produto: ")
-    produto["Preço"] = float(input("Preço do produto: R$"))
-    produto["Quantidade"] = int(input("Quantidade no estoque: "))
+    aluno["Nome"] = input("Nome do aluno: ")
+    aluno["Idade"] = int(input("Idade do aluno: "))
+    aluno["Nota"] = float(input("Nota do aluno: "))
 
-    print("- Produto cadastrado com sucesso!")
+    print("Aluno cadastrado com sucesso!")
 
-    produtos.append(produto)
+    alunos.append(aluno)
 
-def mostrar_produto(produtos):
+def mostrar_aluno(alunos):
     i = 0
-    for produto in produtos:
+    for aluno in alunos:
         i += 1
-        print(f"Produto {i}:")
-        for chave, valor in produto.items():
+        print(f"Aluno {i}:")
+        for chave, valor in alunos.itemss():
             print(f"- {chave}: {valor}")
         print()
 
-def calcular_estoque(produtos):
-    total_produto = 0
-    valor_estoque = 0
+def calcular_media(alunos):
+    soma = 0
+    quantidade = 0
 
-    for produto in produtos:
-        total_produto = produto["Preço"] * produto["Quantidade"]
-        valor_estoque += total_produto
+    for aluno in alunos:
+        soma += aluno["Nota"]
+        quantidade += 1
 
-        print(f"- {produto['Nome']}: R${total_produto}")
-    print()
+    media = soma / quantidade
 
-    print(f"- Valor total do estoque: R${valor_estoque}")
+    print(f"A média das notas existentes é: {media}")
 
-def mostrar_caro(produtos):
-    if len(produtos) > 0:
-        maior_valor = produtos[0]["Preço"]
-        produto_c = produtos[0]["Nome"]
-
-
-        for produto in produtos:
-            if produto["Preço"] > maior_valor:
-                 maior_valor = produto["Preço"]
-                 produto_c = produto["Nome"]
-
-        print(f"Produto mais caro: {produto_c} - {maior_valor}")
-    else:
-        print("Cadastre um produto primeiro!")
-
-
-def buscar_produto(produtos):
-    busca = input("Nome do produto que deseja buscar: ")
-    encontrado = False
-
-    for produto in produtos:
-        if busca == produto["Nome"]:
-            encontrado = True
-
-    if encontrado == True:
-        print("Produto encontrado com sucesso!")
-    else:
-        print("Produto não existente!")
-
-def remover_produto(produtos):
-    remover = input("Nome do produto que deseja remover: ")
-    encontrado = False
-
-    for produto in produtos:
-        if remover == produto["Nome"]:
-            encontrado = True
-
-            produtos.remove(produto)
-            print("Produto removido com sucesso!")
-
-    if encontrado == False:
-        print("Produto não existe ou ja fora deletado!")
-
-def main():
-    while True:
-        menu()
-        try:
-            opcao = int(input("- Insira a opção: "))
-            print()
-        except ValueError:
-            print("- Insira um valor válido!")
-            continue
-
-        match opcao:
-            case 1:
-                cadastrar_produto(produtos)
-            case 2:
-                mostrar_produto(produtos)
-            case 3:
-                calcular_estoque(produtos)
-            case 4:
-                mostrar_caro(produtos)
-            case 5:
-                buscar_produto(produtos)
-            case 6:
-                remover_produto(produtos)
-            case 0:
-                print("Saindo do sistema...")
-                break
-main()
+def mostrar_maior(alunos):
