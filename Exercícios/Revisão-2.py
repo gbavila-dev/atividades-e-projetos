@@ -475,6 +475,7 @@
 alunos = []
 
 def menu():
+    print()
     print("====================")
     print("1 - Cadastrar aluno")
     print("2 - Mostrar alunos")
@@ -486,6 +487,7 @@ def menu():
     print("8 - Remover aluno")
     print("0 - Sair")
     print("====================")
+    print()
 
 def cadastrar_aluno(alunos):
     aluno = {}
@@ -503,20 +505,123 @@ def mostrar_aluno(alunos):
     for aluno in alunos:
         i += 1
         print(f"Aluno {i}:")
-        for chave, valor in alunos.itemss():
+        for chave, valor in aluno.items():
             print(f"- {chave}: {valor}")
         print()
 
 def calcular_media(alunos):
-    soma = 0
-    quantidade = 0
 
-    for aluno in alunos:
-        soma += aluno["Nota"]
-        quantidade += 1
+    if len(alunos) > 0:
+        soma = 0
+        quantidade = 0
 
-    media = soma / quantidade
+        for aluno in alunos:
+            soma += aluno["Nota"]
+            quantidade += 1
 
-    print(f"A média das notas existentes é: {media}")
+        media = soma / quantidade
+
+        print(f"A média das notas existentes é: {media}")
+    else:
+        print("Nenhum aluno cadastrado!")
+    print()
 
 def mostrar_maior(alunos):
+    if len(alunos) > 0:
+        maior_nota = alunos[0]["Nota"]
+        aluno_maior = alunos[0]["Nome"]
+
+        for aluno in alunos:
+            if aluno["Nota"] > maior_nota:
+                maior_nota = aluno["Nota"]
+                aluno_maior = aluno["Nome"]
+
+        print(f"O aluno {aluno_maior} possui a maior nota: {maior_nota}")
+        print()
+
+def mostrar_menor(alunos):
+    if len(alunos) > 0:
+        menor_nota = alunos[0]["Nota"]
+        aluno_menor = alunos[0]["Nome"]
+
+        for aluno in alunos:
+            if aluno["Nota"] < menor_nota:
+                menor_nota = aluno["Nota"]
+                aluno_menor = aluno["Nome"]
+
+        print(f"O aluno {aluno_menor} possui a menor nota: {menor_nota}")
+        print()
+
+def mostrar_aprovados(alunos):
+    reprovado = True
+
+    for aluno in alunos:
+        if aluno["Nota"] >= 6:
+            print(f"{aluno['Nome']}: APROVADO ({aluno['Nota']})")
+            reprovado = False
+
+    if reprovado:
+        print("Nenhum aluno aprovado!")
+    print()
+
+def buscar_alunos(alunos):
+    nome = input("Digite o nome do aluno que queira buscar: ")
+    encontrado = False
+
+    for aluno in alunos:
+        if nome == aluno["Nome"]:
+            encontrado = True
+            aluno_encontrado = aluno["Nome"]
+
+    if encontrado:
+        print(f"O aluno {aluno_encontrado} está cadastrado!")
+    else:
+        print("Nenhum aluno com este nome foi encontrado!")
+    print()
+
+def remover_aluno(alunos):
+    nome = input("Digite o nome do aluno que queira remover: ")
+    encontrado = False
+
+    for aluno in alunos:
+        if nome == aluno["Nome"]:
+            encontrado = True
+
+            alunos.remove(aluno)
+            print(f"O aluno foi removido com sucesso!")
+
+    if encontrado == False:
+        print("Nenhum aluno com este nome foi encontrado!")
+    print()
+
+def main():
+    while True:
+        menu()
+        try:
+            opcao = int(input("Insira uma opção: "))
+            print()
+        except ValueError:
+            print("Insira um valor válido!")
+            continue
+
+        match opcao:
+            case 1:
+                cadastrar_aluno(alunos)
+            case 2:
+                mostrar_aluno(alunos)
+            case 3:
+                calcular_media(alunos)
+            case 4:
+                mostrar_maior(alunos)
+            case 5:
+                mostrar_menor(alunos)
+            case 6:
+                mostrar_aprovados(alunos)
+            case 7:
+                buscar_alunos(alunos)
+            case 8:
+                remover_aluno(alunos)
+            case 0: 
+                print("Encerrando o sistema...")
+                break
+main()
