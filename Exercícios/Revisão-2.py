@@ -629,3 +629,154 @@
 #                 print("Encerrando o sistema...")
 #                 break
 # main()
+
+# ==================================================
+# QUESTÃO 32 — Sistema de Produtos
+# ==================================================
+
+produtos = []
+
+def menu():
+    print()
+    print("===========================")
+    print("1 - Cadastrar produto")
+    print("2 - Mostrar produtos")
+    print("3 - Buscar por categoria")
+    print("4 - Calcular valor total do estoque")
+    print("5 - Mostrar produto mais caro")
+    print("6 - Mostrar produtos com estoque mais baixo")
+    print("7 - Remover produto")
+    print("0 - Sair")
+    print("===========================")
+    print()
+
+def cadastrar_produtos(produtos):
+    produto = {}
+
+    produto["Nome"] = input("Nome do produto: ")
+    produto["Preço"] = float(input("Preço do produto: "))
+    produto["Categoria"] = input("Categoria do produto: ")
+    produto["Quantidade"] = int(input("Quantidade do produto:"))
+
+    print("Produto cadastrado com sucesso!")
+
+    produtos.append(produto)
+
+def mostrar_produtos(produtos):
+    if len(produtos) > 0:
+        i = 0
+
+        for produto in produtos:
+            i += 1
+            print(f"Produto {i}:")
+            for chave, valor in produto.items():
+                print(f"- {chave}: {valor}")
+    else:
+        print("Nenhum produto cadastrado!")
+
+def buscar_categoria(produtos):
+    if len(produtos) > 0:
+        busca = input("Digite a categoria do produto: ")
+        encontrado = False
+
+        for produto in produtos:
+            if busca == produto["Categoria"]:
+                encontrado = True
+                print(f"{busca}: ")
+                for chave, valor in produto.items():
+                    print(f"- {chave}: {valor}")
+        
+        if encontrado == False:
+            print("Categoria não encontrada!")
+    else:
+        print("Nenhum produto cadastrado!")
+
+def calcular_estoque(produtos):
+    if len(produtos) > 0:
+        valor_estoque = 0
+        valor_total = 0
+
+        for produto in produtos:
+            valor_estoque = produto["Preço"] * produto["Quantidade"]
+            valor_total += valor_estoque
+
+        print(f"Valor total do estoque: {valor_total}")
+    else:
+        print("Nenhum produto cadastrado!")
+
+def mostrar_caro(produtos):
+    if len(produtos) > 0:
+        maior = produtos[0]["Preço"]
+        produto_c = produtos[0]["Nome"]
+
+        for produto in produtos:
+            if produto["Preço"] > maior:
+                maior = produto["Preço"]
+                produto_c = produto["Nome"]
+
+        print(f"Produto mais caro: {produto_c} (R${maior}")
+    else:
+        print("Nenhum produto cadastrado!")
+
+def estoque_baixo(produtos):
+    if len(produtos) > 0:
+        encontrado = False
+
+        for produto in produtos:
+            if produto["Quantidade"] <= 5:
+                encontrado = True
+                print("Baixo estoque:")
+                print(f"- {produto["Nome"]}: {produto['Quantidade']}")
+
+        if encontrado == False:
+            print("Nenhum produto possui estoque baixo!")
+    else:
+        print("Nenhum produto cadastrado!")
+
+def remover_produto(produtos):
+    if len(produtos) > 0:
+        b = input("Nome do produto: ")
+        encontrado = False
+
+        for produto in produtos:
+            if b == produto["Nome"]:
+                encontrado = True
+
+                produtos.remove(produto)
+                print("Produto removido com sucesso!")
+
+                break
+
+        if encontrado == False:
+            print("Nenhum produto com esse nome foi encontrado!")
+    else:
+        print("Nenhum produto cadastrado!")
+
+def main():
+    while True:
+        menu()
+        try:
+            opcao = int(input("Insira uma opção: "))
+        except ValueError:
+            print("Insira um valor válido!")
+            continue
+
+        match opcao:
+            case 1:
+                cadastrar_produtos(produtos)
+            case 2:
+                mostrar_produtos(produtos)
+            case 3:
+                buscar_categoria(produtos)
+            case 4:
+                calcular_estoque(produtos)
+            case 5:
+                mostrar_caro(produtos)
+            case 6:
+                estoque_baixo(produtos)
+            case 7:
+                remover_produto(produtos)
+            case 0:
+                print("Encerrando sistema...")
+                break
+main()
